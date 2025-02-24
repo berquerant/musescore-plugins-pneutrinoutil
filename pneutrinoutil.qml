@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.0
 MuseScore {
   menuPath: "Plugins.pneutrinoutil"
   description: "Generate wav file by pneutrinoutil and play it"
-  version: "1.0.0"
+  version: "1.0.1"
   requiresScore: true
   pluginType: "dock"
   dockArea: "left"
