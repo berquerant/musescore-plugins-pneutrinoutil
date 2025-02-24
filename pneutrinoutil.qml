@@ -139,9 +139,6 @@ MuseScore {
       TextField {
         id: textFormantShift
         text: "1.0"
-        onTextChanged: {
-          formantShift = textFormantShift.text
-        }
       }
       // StyleShift input
       Label {
