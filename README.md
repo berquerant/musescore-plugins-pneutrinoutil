@@ -19,7 +19,7 @@ vim bin/pneutrinoutil.sh
 - macOS Sequoia (arm)
 - MuseScore 3.6.2
 - pneutrinoutil[^1] v0.4.1
-- MuseScore 4.4.4
+- MuseScore 4.4.4 (as CLI)
 - direnv[^3]
 
 [^1] https://github.com/berquerant/pneutrinoutil
