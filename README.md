@@ -8,10 +8,7 @@ My [pneutrinoutil](https://github.com/berquerant/pneutrinoutil) integrations in 
 make
 vim .envrc # rewrite values of environment variables
 direnv allow
-make link
-# Rewrite settings
-vim pneutrinoutil.qml
-vim bin/pneutrinoutil.sh
+make install
 ```
 
 # Requirements

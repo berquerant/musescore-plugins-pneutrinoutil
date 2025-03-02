@@ -7,14 +7,13 @@ readonly d="$(cd "$(dirname "$0")" || exit; pwd)"
 #
 # settings
 #
-# NOTE: rewrite the values
 
 # MuseScore4 executable
-readonly mscore=""
+readonly mscore="${MUSESCORE4_BIN}"
 # https://github.com/berquerant/pneutrinoutil dir
-readonly pneutrinoutil_dir=""
+readonly pneutrinoutil_dir="${PNEUTRINOUTIL_DIR}"
 # executable to play wav, like https://github.com/mpv-player/mpv
-readonly player=""
+readonly player="${PLAYER}"
 
 #
 # functions

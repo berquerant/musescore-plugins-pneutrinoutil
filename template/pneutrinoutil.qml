@@ -12,8 +12,7 @@ MuseScore {
   dockArea: "left"
   id: uiPneutrinoutil
 
-  // NOTE: rewrite the value
-  property var script: "/path/to/musescore-plugins-pneutrinoutil/bin/pneutrinoutil.sh"
+  property var script: "${PROJECT}/dist/bin/pneutrinoutil.sh"
 
   QProcess {
     id: proc

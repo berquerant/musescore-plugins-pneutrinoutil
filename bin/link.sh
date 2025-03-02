@@ -1,5 +1,8 @@
 #!/bin/bash
 
-ls -1 *.qml | while read qml ; do
-    ln -s "${PWD}/${qml}" "${PLUGINS_DIR}/${qml}"
+set -e -o pipefail
+
+ls -1 dist/*.qml | while read qml ; do
+    base="$(basename "$qml")"
+    ln -snvf "${PWD}/${qml}" "${PLUGINS_DIR}/${base}"
 done
