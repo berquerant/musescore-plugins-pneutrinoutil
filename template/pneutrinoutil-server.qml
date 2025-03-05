@@ -13,6 +13,7 @@ MuseScore {
   pluginType: "dock"
   dockArea: "left"
   id: uiPneutrinoutilServer
+  width: 350
 
   //
   // event handlers
@@ -642,12 +643,15 @@ MuseScore {
     id: mainRow
     spacing: 2
     anchors.margins: 0
+    anchors.fill: parent
+    Layout.fillWidth: true
 
     GridLayout {
       anchors.fill: parent
       columns: 2
       rowSpacing: 5
       columnSpacing: 5
+      Layout.fillWidth: true
 
       // Run button
       Button {
