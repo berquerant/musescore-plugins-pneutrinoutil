@@ -40,11 +40,17 @@ MuseScore {
   }
 
   function onXMLClicked(index) {
-    windowResultBody.updateByGetMusicXML(getRequestIDFromProcList(index));
+    getRequestIDFromProcList(index);
+    downloadFilePath = newURL("/proc/" + curRequestID + "/musicxml");
+    downloadFileExtension = "musicxml";
+    dialogDownloadFile.update();
   }
 
   function onWavClicked(index) {
-    dialogDownloadWav.update(getRequestIDFromProcList(index));
+    getRequestIDFromProcList(index);
+    downloadFilePath = newURL("/proc/" + curRequestID + "/wav");
+    downloadFileExtension = "wav";
+    dialogDownloadFile.update();
   }
 
   //
@@ -140,6 +146,9 @@ MuseScore {
   }
   property var curRequestID : ""
 
+  property var downloadFilePath : ""
+  property var downloadFileExtension : ""
+
   //
   // Parameters from UI elements
   //
@@ -174,41 +183,40 @@ MuseScore {
   //
 
   QProcess {
-    id: processDownloadWav
+    id: processDownloadFile
+  }
+
+  // Download file from server by curl.
+  //
+  // rid: string
+  // path: string
+  // destFolderURL: string
+  // extension: string
+  function downloadFileFromServer(rid, path, destFolderURL, extension) {
+    const dest = (destFolderURL + "/" + rid + "." + extension).replace("file://", "");
+    const cmd = [
+      "${CURL}",
+      "-o",
+      dest,
+      path
+    ].join(" ");
+    processDownloadFile.start(cmd);
   }
 
   // Dialog to choose the directory to install.
   FileDialog {
-    id: dialogDownloadWav
-    title: "Choose a folder to install the wav file"
+    id: dialogDownloadFile
+    title: "Choose a folder to install the file"
     folder: shortcuts.home
     selectFolder: true
     selectMultiple: false
     onAccepted: {
-      download(curRequestID, dialogDownloadWav.fileUrl);
+      downloadFileFromServer(curRequestID, downloadFilePath, dialogDownloadFile.fileUrl, downloadFileExtension);
     }
 
-    // Download wav by curl.
-    //
-    // rid: string
-    // destFolderURL: string
-    //
-    // TODO: write binary data to local file by QML
-    function download(rid, destFolderURL) {
-      const path = newURL("/proc/" + rid + "/wav");
-      const dest = (destFolderURL + "/" + rid + ".wav").replace("file://", "");
-      const cmd = [
-        "${CURL}",
-        "-o",
-        dest,
-        path
-      ].join(" ");
-      processDownloadWav.start(cmd);
-    }
-
-    // Download wav file.
+    // Download file.
     function update() {
-      dialogDownloadWav.open();
+      dialogDownloadFile.open();
     }
   }
 
@@ -393,15 +401,6 @@ MuseScore {
     // rid: string
     function updateByGetLog(rid) {
       getFromServer("/proc/" + rid + "/log", function (xhr) {
-        textResultBody.text = xhr.responseText;
-        windowResultBody.visible = true;
-      });
-    }
-    // Set info from /proc/:id/musicxml and display this.
-    //
-    // rid: string
-    function updateByGetMusicXML(rid) {
-      getFromServer("/proc/" + rid + "/musicxml", function (xhr) {
         textResultBody.text = xhr.responseText;
         windowResultBody.visible = true;
       });
