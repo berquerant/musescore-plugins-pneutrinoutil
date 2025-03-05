@@ -14,4 +14,3 @@ render() {
 
 mkdir -p dist/bin
 ls -1 template/*.qml | while read x ; do render "$x" dist ; done
-ls -1 template/bin/*.sh | while read x ; do render "$x" dist/bin ; done

@@ -15,6 +15,6 @@ make install
 
 - macOS Sequoia (arm)
 - MuseScore 3.6.2
-- pneutrinoutil v0.4.1
-- MuseScore 4.4.4 (as CLI)
+- pneutrinoutil-server v0.5.3
 - [direnv](https://github.com/direnv/direnv)
+- curl
