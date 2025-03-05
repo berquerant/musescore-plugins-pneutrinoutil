@@ -437,21 +437,27 @@ MuseScore {
               columnSpacing: 5
               Label {
                 text: "<b>ID</b>"
+                color: "White"
               }
               Text {
                 text: rid
+                color: "White"
               }
               Label {
                 text: "<b>Basename</b>"
+                color: "White"
               }
               Text {
                 text: basename
+                color: "White"
               }
               Label {
                 text: "<b>CreatedAt</b>"
+                color: "White"
               }
               Text {
                 text: createdAt
+                color: "White"
               }
             }
             //
@@ -517,7 +523,7 @@ MuseScore {
       anchors.fill: parent
       model: modelProcList
       delegate: procListDelegate
-      highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+      highlight: Rectangle { color: "gray"; radius: 5 }
       focus: true
       highlightFollowsCurrentItem: true
     }
